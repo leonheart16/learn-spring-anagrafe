@@ -1,0 +1,17 @@
+com\personalproject\enums\StatoAnagraficoEnum.class
+com\personalproject\App.class
+com\personalproject\service\SoggettoService.class
+com\personalproject\service\EmailService.class
+com\personalproject\controller\HomeController.class
+com\personalproject\model\Soggetto.class
+com\personalproject\repository\StatoAnagraficoRepository.class
+com\personalproject\model\StatoAnagrafico.class
+com\personalproject\model\Email.class
+com\personalproject\repository\SoggettoRepository.class
+com\personalproject\controller\SoggettoController.class
+com\personalproject\converter\StatoAnagraficoConverter.class
+com\personalproject\config\StatoAnagraficoInitializer.class
+com\personalproject\controller\HelloController.class
+com\personalproject\service\StatoAnagraficoService.class
+com\personalproject\repository\EmailRepository.class
+com\personalproject\exception\CustomErrorController.class

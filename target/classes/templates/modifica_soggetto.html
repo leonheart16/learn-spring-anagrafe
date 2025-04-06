@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Modifica Soggetto</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-light">
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<div class="container mt-5">
+		<div class="card shadow-lg mt-5">
+			<div class="card-header bg-primary text-white text-center">
+				<h3 class="mb-0">Modifica Soggetto</h3>
+			</div>
+
+			<div class="card-body">
+				<form th:action="@{/soggetti/salva}" th:object="${soggetto}" method="post">
+
+					<!-- ID (Hidden) -->
+					<input type="hidden" th:field="*{id}">
+
+					<div class="mb-3">
+						<label class="form-label">Nome</label>
+						<input type="text" class="form-control" th:field="*{nome}" required>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Cognome</label>
+						<input type="text" class="form-control" th:field="*{cognome}" required>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Sesso</label>
+						<select class="form-select" th:field="*{sesso}" required>
+							<option value="M">Maschio</option>
+							<option value="F">Femmina</option>
+						</select>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Data di Nascita</label>
+						<input type="date" class="form-control" name="dataNascita" th:value="${dataNascitaFormatted}" required>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Stato Anagrafico</label>
+						<select class="form-select" th:field="*{statoAnagrafico}" required>
+							<option th:each="stato : ${statiAnagrafici}"
+											th:value="${stato.codice}"
+											th:text="${stato.descrizione}"
+											th:selected="${soggetto.statoAnagrafico != null && soggetto.statoAnagrafico.codice == stato.codice}">
+							</option>
+						</select>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Email</label>
+						<input type="email" class="form-control" th:field="*{email.indirizzoEmail}">
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Tipo Email</label>
+						<input type="text" class="form-control" th:field="*{email.tipoEmail}" required>
+					</div>
+
+					<div class="mb-3">
+						<label class="form-label">Ultimo Aggiornamento Email</label>
+						<input type="datetime-local" class="form-control" name="dataAggiornamento" th:value="${dataAggiornamentoFormatted}">
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-success">Salva</button>
+						<a th:href="@{/soggetti}" class="btn btn-secondary">Annulla</a>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
